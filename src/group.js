@@ -80,7 +80,10 @@ export default function group(title, content = {}, color = 'inherit') {
 
   logger.groupCollapsed(
     ` %c${title} %c@ ${time}`,
-    style({ color }),
+    style({
+      color,
+      weight: FONT_WEIGHT_NORMAL,
+    }),
     style({
       color: 'inherit',
       weight: FONT_WEIGHT_BOLD,

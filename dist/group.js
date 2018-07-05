@@ -85,7 +85,10 @@
 
     var time = getFormattedTime();
 
-    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style({ color: color }), style({
+    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style({
+      color: color,
+      weight: FONT_WEIGHT_NORMAL
+    }), style({
       color: 'inherit',
       weight: FONT_WEIGHT_BOLD
     }), style());
