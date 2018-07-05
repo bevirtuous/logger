@@ -80,8 +80,11 @@ export default function group(title, content = {}, color = 'inherit') {
 
   logger.groupCollapsed(
     ` %c${title} %c@ ${time}`,
-    style(color),
-    style('inherit', FONT_WEIGHT_BOLD),
+    style({ color }),
+    style({
+      color: 'inherit',
+      weight: FONT_WEIGHT_BOLD,
+    }),
     style()
   );
 
@@ -91,16 +94,20 @@ export default function group(title, content = {}, color = 'inherit') {
     Object.keys(content).forEach((key) => {
       const value = content[key];
       const action = (`${key}:`).padEnd(maxLength);
+      const styles = {
+        color: KEY_COLOR,
+        weight: FONT_WEIGHT_BOLD,
+      };
 
       // If the content is an object, log all keys individually.
       if (typeof value === 'object' && value !== null && value.constructor === Object) {
         if (!Object.keys(value).length) {
-          logger.log(` %c ${action}`, style(KEY_COLOR, FONT_WEIGHT_BOLD), undefined);
+          logger.log(` %c ${action}`, style(styles), undefined);
         } else {
-          logger.log(` %c ${action}`, style(KEY_COLOR, FONT_WEIGHT_BOLD), value);
+          logger.log(` %c ${action}`, style(styles), value);
         }
       } else {
-        logger.log(` %c ${action}`, style(KEY_COLOR, FONT_WEIGHT_BOLD), value);
+        logger.log(` %c ${action}`, style(styles), value);
       }
     });
   }

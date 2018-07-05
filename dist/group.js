@@ -85,7 +85,10 @@
 
     var time = getFormattedTime();
 
-    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style(color), style('inherit', FONT_WEIGHT_BOLD), style());
+    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style({ color: color }), style({
+      color: 'inherit',
+      weight: FONT_WEIGHT_BOLD
+    }), style());
 
     if (Object.keys(content).length) {
       var maxLength = maxKeysLength(content) + 2;
@@ -93,15 +96,19 @@
       Object.keys(content).forEach(function (key) {
         var value = content[key];
         var action = (key + ':').padEnd(maxLength);
+        var styles = {
+          color: KEY_COLOR,
+          weight: FONT_WEIGHT_BOLD
+        };
 
         if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null && value.constructor === Object) {
           if (!Object.keys(value).length) {
-            _logger2.default.log(' %c ' + action, style(KEY_COLOR, FONT_WEIGHT_BOLD), undefined);
+            _logger2.default.log(' %c ' + action, style(styles), undefined);
           } else {
-            _logger2.default.log(' %c ' + action, style(KEY_COLOR, FONT_WEIGHT_BOLD), value);
+            _logger2.default.log(' %c ' + action, style(styles), value);
           }
         } else {
-          _logger2.default.log(' %c ' + action, style(KEY_COLOR, FONT_WEIGHT_BOLD), value);
+          _logger2.default.log(' %c ' + action, style(styles), value);
         }
       });
     }
