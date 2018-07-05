@@ -32,7 +32,7 @@
     return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
 
-  var KEY_COLOR = 'inherit';
+  var KEY_COLOR = 'gray';
   var FONT_WEIGHT_NORMAL = 'lighter';
   var FONT_WEIGHT_BOLD = 'bold';
 
@@ -81,11 +81,11 @@
 
   function group(title) {
     var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : KEY_COLOR;
+    var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'inherit';
 
     var time = getFormattedTime();
 
-    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style(color), style(KEY_COLOR, FONT_WEIGHT_BOLD), style());
+    _logger2.default.groupCollapsed(' %c' + title + ' %c@ ' + time, style(color), style('inherit', FONT_WEIGHT_BOLD), style());
 
     if (Object.keys(content).length) {
       var maxLength = maxKeysLength(content) + 2;

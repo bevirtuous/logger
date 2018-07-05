@@ -1,6 +1,6 @@
 import logger from './logger';
 
-const KEY_COLOR = 'inherit';
+const KEY_COLOR = 'gray';
 const FONT_WEIGHT_NORMAL = 'lighter';
 const FONT_WEIGHT_BOLD = 'bold';
 
@@ -75,13 +75,13 @@ function style({ color, weight } = defaultStyles) {
  * @param {Object} [content={}] Some content to show in the group.
  * @param {string} [color='inherit'] The color for the title.
  */
-export default function group(title, content = {}, color = KEY_COLOR) {
+export default function group(title, content = {}, color = 'inherit') {
   const time = getFormattedTime();
 
   logger.groupCollapsed(
     ` %c${title} %c@ ${time}`,
     style(color),
-    style(KEY_COLOR, FONT_WEIGHT_BOLD),
+    style('inherit', FONT_WEIGHT_BOLD),
     style()
   );
 
