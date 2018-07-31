@@ -1,6 +1,6 @@
 {
   "name": "@virtuous/logger",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0",
   "description": "A logging engine for JavaScript applications.",
   "main": "./dist/index.js",
   "repository": "git@github.com:bevirtuous/logger.git",
