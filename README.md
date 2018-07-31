@@ -1,7 +1,7 @@
 # @virtuous/logger
 
 [![Build Status](https://travis-ci.org/bevirtuous/logger.svg?branch=master)](https://travis-ci.org/bevirtuous/logger)
-[![Coverage Status](https://coveralls.io/repos/github/bevirtuous/logger/badge.svg?branch=develop)](https://coveralls.io/github/bevirtuous/logger?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/bevirtuous/logger/badge.svg?branch=master)](https://coveralls.io/github/bevirtuous/logger?branch=master)
 [![GitHub (pre-)release](https://img.shields.io/github/release/bevirtuous/logger/all.svg)](https://github.com/bevirtuous/logger/releases)
 
 **Logger** is a simple but effective logging engine for JavaScript applications.
