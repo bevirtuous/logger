@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`group getFormattedTime returns a formatted time string 1`] = `"00:38:38.396"`;
+
+exports[`group maxKeysLength should return the highest length of a key in an object 1`] = `6`;
+
+exports[`group pad returns a string of a number with one leading 0 1`] = `"5"`;
+
+exports[`group pad returns a string of a number wuth three leading 0 1`] = `"0005"`;
+
+exports[`group repeat returns the original string if no repeantance defined 1`] = `"foo"`;
+
+exports[`group repeat returns the string 5 times 1`] = `"foofoofoofoofoo"`;
+
+exports[`group style should return a valid styling with custom values. 1`] = `"color: #fff; font-weight: bold;"`;
+
+exports[`group style should return a valid styling with default values. 1`] = `"color: gray; font-weight: lighter;"`;

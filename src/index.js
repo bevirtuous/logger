@@ -1,2 +1,2 @@
-export { default as logger } from './logger';
-export { default as group } from './group';
+export * from './logger';
+export * from './group';

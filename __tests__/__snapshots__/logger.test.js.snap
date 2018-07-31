@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`logger has assert function 1`] = `[Function]`;
+
+exports[`logger has clear function 1`] = `[Function]`;
+
+exports[`logger has count function 1`] = `[Function]`;
+
+exports[`logger has error function 1`] = `[Function]`;
+
+exports[`logger has group function 1`] = `[Function]`;
+
+exports[`logger has groupCollapsed function 1`] = `[Function]`;
+
+exports[`logger has groupEnd function 1`] = `[Function]`;
+
+exports[`logger has info function 1`] = `[Function]`;
+
+exports[`logger has log function 1`] = `[Function]`;
+
+exports[`logger has time function 1`] = `[Function]`;
+
+exports[`logger has timeEnd function 1`] = `[Function]`;
+
+exports[`logger has trace function 1`] = `[Function]`;
+
+exports[`logger has warn function 1`] = `[Function]`;

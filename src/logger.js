@@ -1,3 +1,1 @@
-const logger = console;
-
-export default logger;
+export const logger = console;

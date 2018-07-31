@@ -1,4 +1,4 @@
-import logger from './logger';
+import { logger } from './logger';
 
 const KEY_COLOR = 'gray';
 const FONT_WEIGHT_NORMAL = 'lighter';
@@ -8,6 +8,7 @@ const defaultStyles = {
   color: KEY_COLOR,
   weight: FONT_WEIGHT_NORMAL,
 };
+const defaultDate = new Date();
 
 /**
  * Repeates a string by a defined amount of times.
@@ -15,7 +16,11 @@ const defaultStyles = {
  * @param {number} times How many times the string should be repeated.
  * @return {string}
  */
-function repeat(str, times) {
+export function repeat(str, times) {
+  if (!times) {
+    return str;
+  }
+
   return (new Array(times + 1)).join(str);
 }
 
@@ -25,15 +30,19 @@ function repeat(str, times) {
  * @param {number} maxLength The length of the resulting string.
  * @return {string}
  */
-function pad(num, maxLength) {
+export function pad(num, maxLength) {
+  if (!maxLength || num.toString().length === maxLength) {
+    return `${num}`;
+  }
+
   return repeat('0', maxLength - num.toString().length) + num;
 }
 
 /**
+ * @param {Object} [time] The base time.
  * @return {string}
  */
-function getFormattedTime() {
-  const time = new Date();
+export function getFormattedTime(time = defaultDate) {
   const hours = pad(time.getHours(), 2);
   const minutes = pad(time.getMinutes(), 2);
   const seconds = pad(time.getSeconds(), 2);
@@ -47,12 +56,12 @@ function getFormattedTime() {
  * @param {Object} prop The object to walk through.
  * @return {number}
  */
-function maxKeysLength(prop) {
+export function maxKeysLength(prop) {
   let maxLength = 0;
 
   Object.keys(prop).forEach((key) => {
-    if ((key.length + 1) > maxLength) {
-      maxLength = key.length + 1;
+    if (key.length > maxLength) {
+      maxLength = key.length;
     }
   });
 
@@ -65,7 +74,7 @@ function maxKeysLength(prop) {
  * @param {string} [props.weight='lighter'] The font weight.
  * @return {string}
  */
-function style({ color, weight } = defaultStyles) {
+export function style({ color, weight } = defaultStyles) {
   return `color: ${color}; font-weight: ${weight};`;
 }
 
@@ -75,8 +84,13 @@ function style({ color, weight } = defaultStyles) {
  * @param {Object} [content={}] Some content to show in the group.
  * @param {string} [color='inherit'] The color for the title.
  */
-export default function group(title, content = {}, color = 'inherit') {
+export function group(title, content = {}, color = 'inherit') {
   const time = getFormattedTime();
+
+  if (!Object.keys(content).length) {
+    logger.log(` ${title} @ ${time}`);
+    return;
+  }
 
   logger.groupCollapsed(
     ` %c${title} %c@ ${time}`,
@@ -91,29 +105,27 @@ export default function group(title, content = {}, color = 'inherit') {
     style()
   );
 
-  if (Object.keys(content).length) {
-    const maxLength = maxKeysLength(content) + 2;
+  const maxLength = maxKeysLength(content) + 2;
 
-    Object.keys(content).forEach((key) => {
-      const value = content[key];
-      const action = (`${key}:`).padEnd(maxLength);
-      const styles = {
-        color: KEY_COLOR,
-        weight: FONT_WEIGHT_BOLD,
-      };
+  Object.keys(content).forEach((key) => {
+    const value = content[key];
+    const action = `${key}:`.padEnd(maxLength);
+    const styles = {
+      color: KEY_COLOR,
+      weight: FONT_WEIGHT_BOLD,
+    };
 
-      // If the content is an object, log all keys individually.
-      if (typeof value === 'object' && value !== null && value.constructor === Object) {
-        if (!Object.keys(value).length) {
-          logger.log(` %c ${action}`, style(styles), undefined);
-        } else {
-          logger.log(` %c ${action}`, style(styles), value);
-        }
+    // If the content is an object, log all keys individually.
+    if (typeof value === 'object' && value !== null && value.constructor === Object) {
+      if (!Object.keys(value).length) {
+        logger.log(` %c ${action}`, style(styles), undefined);
       } else {
         logger.log(` %c ${action}`, style(styles), value);
       }
-    });
-  }
+    } else {
+      logger.log(` %c ${action}`, style(styles), value);
+    }
+  });
 
   logger.groupEnd();
 }
