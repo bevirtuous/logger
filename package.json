@@ -9,9 +9,9 @@
   "scripts": {
     "build": "rm -rf dist/ && NODE_ENV=production babel src --out-dir dist --no-comments",
     "release": "yarn run build && git add -A",
-    "postrelease": "git push && git push --tags && npm publish",
+    "postrelease": "git push && git push --tags && npm publish --access=public",
     "release:beta": "yarn run build && git add -A",
-    "postrelease:beta": "git push && git push --tags && npm publish --tag=beta",
+    "postrelease:beta": "git push && git push --tags && npm publish --access=public --tag=beta",
     "test": "jest",
     "test:watch": "jest --no-cache --watch",
     "cover": "jest --coverage",
