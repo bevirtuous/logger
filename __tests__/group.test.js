@@ -30,15 +30,6 @@ describe('group', () => {
     });
   });
 
-  describe('getFormattedTime', () => {
-    const time = new Date(Date.UTC(2018, 7, 30, 22, 38, 38, 396));
-    it('returns a formatted time string', () => {
-      const result = group.getFormattedTime(time);
-      expect(result).toBe('00:38:38.396');
-      expect(result).toMatchSnapshot();
-    });
-  });
-
   describe('maxKeysLength', () => {
     it('should return the highest length of a key in an object', () => {
       const result = group.maxKeysLength({
