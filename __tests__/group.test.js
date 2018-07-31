@@ -31,10 +31,10 @@ describe('group', () => {
   });
 
   describe('getFormattedTime', () => {
-    const time = new Date('2018-07-30T22:38:38.396Z');
+    const time = new Date(Date.UTC(2018, 7, 30, 22, 38, 38, 396));
     it('returns a formatted time string', () => {
       const result = group.getFormattedTime(time);
-      expect(result).toBe('22:38:38.396');
+      expect(result).toBe('00:38:38.396');
       expect(result).toMatchSnapshot();
     });
   });
