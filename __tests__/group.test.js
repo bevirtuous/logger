@@ -34,7 +34,7 @@ describe('group', () => {
     const time = new Date('2018-07-30T22:38:38.396Z');
     it('returns a formatted time string', () => {
       const result = group.getFormattedTime(time);
-      expect(result).toBe('00:38:38.396');
+      expect(result).toBe('22:38:38.396');
       expect(result).toMatchSnapshot();
     });
   });
