@@ -8,6 +8,10 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/ && NODE_ENV=production babel src --out-dir dist --no-comments",
+    "release": "yarn run build && git add -A",
+    "postrelease": "git push && git push --tags && npm publish",
+    "release:beta": "yarn run build && git add -A",
+    "postrelease:beta": "git push && git push --tags && npm publish --tag=beta",
     "test": "jest",
     "test:watch": "jest --no-cache --watch",
     "cover": "jest --coverage",
